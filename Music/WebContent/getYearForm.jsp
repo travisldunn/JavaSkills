@@ -5,28 +5,24 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="getYearStyleSheet.css">
 <title>Music</title>
 </head>
 <body>
-<!-- 	<form action="Year.do" method="GET"> -->
-<!-- 		<h3>Choose a Year</h3> -->
-<!-- 		Album of the year:<input type="text" name="year" />  -->
-<!-- 		<input type="submit" value="Submit" /><br> -->
-<!-- 	</form> -->
-	
+	<img class="banner" src="Grammy/g.jpg" />
+	<br>
+	<div id="mainbody">
 		<form action="getYearList.do" method="POST">
-		<select name="year">
-			<c:forEach var="album" items="${albums}">
-				<option value="${album.year}">${album.year}</option>
-			</c:forEach>
-		</select> <input type="submit" value="Pick a Year" />
-	</form>
-
-
-
-	
-	
+			<select name="year">
+				<c:forEach var="album" items="${albums}">
+					<option value="${album.year}">${album.year}</option>
+				</c:forEach>
+			</select>
+			<button type="submit">Pick a Year</button>
+		</form>
+		</div>
+		
+		<div id="Footer"></div>
 	
 </body>
 </html>

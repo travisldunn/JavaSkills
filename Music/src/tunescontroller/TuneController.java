@@ -31,8 +31,23 @@ public class TuneController {
 		musicFileDao.addToFav(y);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("musicResult.jsp");
+		mv.addObject("list", musicFileDao.getFavAlbums());
 		mv.addObject("sesYear", new Integer(y));
+		mv.addObject("albums", musicFileDao.getAlbums());
 		mv.addObject("bean", mb);
+		return mv;
+	}
+	
+	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.GET)
+	public ModelAndView getDeleteFav(@ModelAttribute("sesYear") int y) {
+		MusicBean mb = musicFileDao.getAlbum("" + y);
+		System.out.println(y);
+		musicFileDao.deleteFav(y);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("musicResult.jsp");
+		mv.addObject("albums", musicFileDao.getAlbums());
+		mv.addObject("bean", mb);
+		mv.addObject("sesYear", new Integer(y));
 		return mv;
 	}
 
@@ -86,24 +101,11 @@ public class TuneController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("musicResult.jsp");
 		mv.addObject("albums", musicFileDao.getAlbums());
-
 		mv.addObject("bean", mb);
 		mv.addObject("sesYear", y);
 		return mv;
 	}
 
-	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.GET)
-	public ModelAndView getDeleteFav(@ModelAttribute("sesYear") int y) {
-		MusicBean mb = musicFileDao.getAlbum("" + y);
-		musicFileDao.deleteFav(y);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("musicResult.jsp");
-		mv.addObject("albums", musicFileDao.getAlbums());
-
-		mv.addObject("bean", mb);
-		mv.addObject("sesYear", new Integer(y));
-		return mv;
-	}
 
 	@RequestMapping(path = "comment.do", method = RequestMethod.GET)
 	public ModelAndView getComment(@RequestParam("comment") String co, @ModelAttribute("sesYear") int y) {

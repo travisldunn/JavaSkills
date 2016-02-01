@@ -1,30 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="favoriteStyleSheet.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Favorite List</title>
+
+<style type="text/css">
+body {
+	 margin-left: 0px;
+	 margin-top: 0px;
+	 margin-right: 0px;
+	 margin-bottom: 0px;
+}
+</style>
 </head>
+
+
 <body>
-
-
-	<form>
-
-		<c:forEach var="favorite" items="${list}">
-		
-			<a href="http://localhost:8080/Music/Year.do?year=${favorite.year}"><img src="Grammy/${favorite.albumLink}" /></a>
-			
-		</c:forEach>
-		
-	
-		
-	</form>
-	
-
-	
-
+	<div id="Header">
+		<img id="header" src="Grammy/head.jpg"/>
+	</div>
+	<div id="wrapper">
+		<form>
+			<c:forEach var="favorite" items="${list}">
+				<a href="http://localhost:8080/Music/Year.do?year=${favorite.year}">
+					<img src="Grammy/${favorite.albumLink}" />
+				</a>
+			</c:forEach>
+		</form>
+	</div>
 </body>
 </html>
